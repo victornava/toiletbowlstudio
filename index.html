@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title></title>
+  <style>
+    main { 
+      font-size: 48px;
+      font-family: "Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", sans-serif;
+      color: lime;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 800px;
+      text-align: center;
+      padding: 1em;
+    }
+    body { background-image: url('puppy.gif')}
+    button { font-size: 24px; }
+    .punchline { display: none; }
+  </style>
+</head>
+<body>
+<main>
+</main>
+<script>
+  let $ = (q) => document.querySelector(q)
+  
+  let jokes = [
+    {
+      setup: "Did you hear the rumor about the broom?",
+      punchline: "It swept the nation."
+    },
+    {
+      setup: "Why did the toilet paper rolled down the hill?",
+      punchline: "To get to the bottom."
+    },
+    {
+      setup: "Why did school kid climb the ladder?",
+      punchline: "To get to highschool."
+    },
+    {
+      setup: "Why did the golfer bring a spare pair of 🧦?",
+      punchline: "In case it got a whole in one."
+    },
+    {
+      setup: "Did you hear the rumour about the guacamole?",
+      punchline: "It certainly came out of the bum with a bang!"
+    },
+    {
+      setup: "What type of comb do bees have?",
+      punchline: "A honey comb"
+    },
+    {
+      setup: "Why did my aunty tell me to go to the toilet?",
+      punchline: "Because I had a big brown sloppy object in my pants"
+    },
+    {
+      setup: "Did you hear what happened to the kid who ate curry?",
+      punchline: "His butt exploded! 💩"
+    },
+    {
+      setup: "Why did Noah and Ethan salad stink?",
+      punchline: "Because it was full of guacamole 🥑"
+    },
+    {
+      setup: "Why are all the numbers scared of seven?",
+      punchline: "Because seven ate nine"
+    },
+    {
+      setup: "What did the number zero said to the number eight?",
+      punchline: "Nice belt"
+    },
+    {
+      setup: "Why was there a strange noise coming from uncle V?",
+      punchline: "He ate beens the day before 🫘"
+    },
+    {
+      setup: "Who's bum hit the bench",
+      punchline: "The chair's"
+    }
+  ] 
+  
+  let reactions = [
+    "Boooo, nut funny.",
+    "Nice one.",
+    "That smells worse than diarrhea.",
+    "That's OK.",
+    "That's so bad my nuts fell off.",
+    "Best joke ever.",
+    "Poopy doopy never smelt anything so nice",
+    "whinie the poop smells better",
+    "Poooooooooooop",
+    "I nearly vomited,that was so bad!!!!!",
+    "You think that was bad? It was amazing",
+  ]
+  
+  function showJoke() {
+    $("main").innerHTML = `
+      <div class="setup">
+        ${joke.setup}
+        <br>
+        <button class="punchlineButton" onclick="showPunchline()">Show Punchline</button>
+      </div>
+      <div class="punchline">
+        ${joke.punchline}
+        <br>
+        <br>
+        And the public says:
+        <br>
+        <br>
+        ${random(reactions)}
+        <br>
+        <button class="nextJokeButton" onclick="showNextJoke()">Next Joke</button>
+      </div>
+    `
+  }
+  
+  function showSetup() {
+    $(".setup").style.display = "block"
+  }
+  
+  function showPunchline() {
+    $(".setup").style.display = "none"
+    $(".punchline").style.display = "block" 
+  }
+  
+  function random(list){
+    return list[Math.floor(Math.random() * list.length)]
+  }
+  
+  function pickRandomReaction(){
+    return reactions[Math.floor(Math.random() * reactions.length)]
+  }
+  
+  function showNextJoke() {
+    reaction = random(reactions)
+    joke = random(jokes)
+    showJoke();
+  }
+  
+  showNextJoke()
+</script>
+</body>
+</html>
